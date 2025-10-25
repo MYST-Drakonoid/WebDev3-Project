@@ -1,0 +1,100 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body styling - Steam-like dark background */
+body {
+  background-color: #1b2838; /* Steam dark blue/gray */
+  color: #c7d5e0; /* Light gray text */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #171a21; /* Steam header dark */
+  padding: 20px 10px;
+  border-bottom: 2px solid #2a475e;
+}
+
+/* Logo and title side by side */
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.logo {
+  height: 50px; /* adjust as needed */
+}
+
+.header-title {
+  font-size: 2rem;
+  color: #c7d5e0;
+}
+
+/* Menu options */
+.menu-options {
+  list-style: none;
+  display: flex;
+  gap: 50px; /* spacing between menu items */
+  justify-content: center;
+}
+
+.menu-options li a {
+  text-decoration: none;
+  color: #c7d5e0;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.menu-options li a:hover {
+  background-color: #2a475e;
+  color: #ffffff;
+}
+
+/* Footer */
+.footer {
+  background-color: #171a21;
+  text-align: center;
+  padding: 15px;
+  margin-top: auto;
+  color: #c7d5e0;
+}
+
+/* Random Game Button */
+#rButton {
+  display: block;               /* make it take its own line */
+  margin: 30px auto;            /* center horizontally, with space from header */
+  padding: 15px 35px;           /* larger clickable area */
+  font-size: 1.2rem;            /* readable text */
+  font-weight: bold;
+  color: #ffffff;               /* white text */
+  background-color: #66c0f4;    /* Steam blue */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover effect */
+#rButton:hover {
+  background-color: #4ea1d3;    /* darker blue on hover */
+  transform: translateY(-2px);  /* subtle lift effect */
+}
+
+/* Optional active effect */
+#rButton:active {
+  transform: translateY(1px);
+}
