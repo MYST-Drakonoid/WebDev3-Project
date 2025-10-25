@@ -1,4 +1,23 @@
-/* General Reset */
+/* --- Theme Variables --- */
+:root {
+  --color-background: #1b2838;
+  --color-header: #171a21;
+  --color-block: #2a475e;
+  --color-block-border: #3c5a72;
+  --color-button: #66c0f4;
+  --color-button-hover: #4ea1d3;
+  --color-text: #c7d5e0;
+  --color-link: #66c0f4;
+  --color-link-hover: #ffffff;
+
+  --shadow-default: 0 4px 8px rgba(0,0,0,0.3);
+  --border-radius: 8px;
+
+  --padding-block: 20px;
+  --margin-block: 20px;
+}
+
+/* --- General --- */
 * {
   margin: 0;
   padding: 0;
@@ -6,26 +25,24 @@
   font-family: Arial, sans-serif;
 }
 
-/* Body styling - Steam-like dark background */
 body {
-  background-color: #1b2838; /* Steam dark blue/gray */
-  color: #c7d5e0; /* Light gray text */
+  background-color: var(--color-background);
+  color: var(--color-text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* HEADER */
+/* --- Header --- */
 .header-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #171a21; /* Steam header dark */
+  background-color: var(--color-header);
   padding: 20px 10px;
-  border-bottom: 2px solid #2a475e;
+  border-bottom: 2px solid var(--color-block-border);
 }
 
-/* Logo and title side by side */
 .logo-title {
   display: flex;
   align-items: center;
@@ -34,25 +51,24 @@ body {
 }
 
 .logo {
-  height: 50px; /* adjust as needed */
+  height: 50px;
 }
 
 .header-title {
   font-size: 2rem;
-  color: #c7d5e0;
+  color: var(--color-text);
 }
 
-/* Menu options */
 .menu-options {
   list-style: none;
   display: flex;
-  gap: 50px; /* spacing between menu items */
+  gap: 50px;
   justify-content: center;
 }
 
 .menu-options li a {
   text-decoration: none;
-  color: #c7d5e0;
+  color: var(--color-text);
   font-weight: bold;
   padding: 10px 15px;
   border-radius: 5px;
@@ -60,41 +76,81 @@ body {
 }
 
 .menu-options li a:hover {
-  background-color: #2a475e;
-  color: #ffffff;
+  background-color: var(--color-block);
+  color: var(--color-link-hover);
 }
 
-/* Footer */
-.footer {
-  background-color: #171a21;
+/* --- Main Body --- */
+#mainbody {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Subtitle */
+.subTitle {
+  font-size: 1.8rem;
+  color: var(--color-text);
+  margin: 25px auto 15px auto;
   text-align: center;
-  padding: 15px;
-  margin-top: auto;
-  color: #c7d5e0;
+  border-bottom: 2px solid var(--color-block-border);
+  padding-bottom: 5px;
+  max-width: 600px;
 }
 
-/* Random Game Button */
+/* --- Random Button --- */
 #rButton {
-  display: block;               /* make it take its own line */
-  margin: 30px auto;            /* center horizontally, with space from header */
-  padding: 15px 35px;           /* larger clickable area */
-  font-size: 1.2rem;            /* readable text */
+  display: block;
+  margin: 30px auto;
+  padding: 15px 35px;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: #ffffff;               /* white text */
-  background-color: #66c0f4;    /* Steam blue */
+  color: var(--color-text);
+  background-color: var(--color-button);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Hover effect */
 #rButton:hover {
-  background-color: #4ea1d3;    /* darker blue on hover */
-  transform: translateY(-2px);  /* subtle lift effect */
+  background-color: var(--color-button-hover);
+  transform: translateY(-2px);
 }
 
-/* Optional active effect */
 #rButton:active {
   transform: translateY(1px);
+}
+
+/* --- Content Block --- */
+.content-block {
+  background-color: var(--color-block);
+  border: 1px solid var(--color-block-border);
+  border-radius: var(--border-radius);
+  padding: var(--padding-block);
+  margin: var(--margin-block) auto;
+  max-width: 800px;
+  color: var(--color-text);
+  box-shadow: var(--shadow-default);
+}
+
+.content-block a {
+  color: var(--color-link);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.content-block a:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+/* --- Footer --- */
+.footer {
+  background-color: var(--color-header);
+  text-align: center;
+  padding: 15px;
+  color: var(--color-text);
 }
