@@ -182,3 +182,14 @@ body {
 .search-bar:focus {
   border-color: var(--color-button);
 }
+
+/* --- Game Grid --- */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
