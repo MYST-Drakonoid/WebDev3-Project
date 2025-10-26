@@ -193,3 +193,50 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
+
+/* --- Game Card --- */
+.game-card {
+  background-color: var(--color-block);
+  border: 2px solid var(--color-block-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-default);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  /*fun interaction, but we can change or remove too if you want*/
+}
+
+.game-image {
+  width: 100%;
+  height: 215px;
+  object-fit: cover;
+  display: block;
+}
+
+.game-info {
+  padding: 20px;
+}
+
+.game-title {
+  font-size: 1.4rem;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.game-description {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.game-rating {
+  font-size: 1rem;
+  color: var(--color-button);
+  font-weight: bold;
+}
