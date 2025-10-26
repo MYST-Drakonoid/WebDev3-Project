@@ -154,3 +154,31 @@ body {
   padding: 15px;
   color: var(--color-text);
 }
+
+
+/* --- Search Bar --- */
+.search-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  background-color: var(--color-block);
+  border: 2px solid var(--color-block-border);
+  border-radius: var(--border-radius);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-bar::placeholder {
+  color: rgba(199, 213, 224, 0.5);
+}
+
+.search-bar:focus {
+  border-color: var(--color-button);
+}
