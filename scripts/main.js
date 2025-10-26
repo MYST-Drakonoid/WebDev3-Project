@@ -54,3 +54,59 @@ getAppId("Portal 2")
     .catch(error => {
         console.error('Error:', error);
     });
+
+
+// I am getting rid of inappropriate games from the list with the function below. If you find more keywords please add them to the array. Some of these might seem weird, but edit at your own risk. Still need to add descriptions.
+function isInappropriateGame(game) {
+    const inappropriateKeywords = ['waifu', 'hentai', 'lewd', 'slut', 'xxx', 'adult', 'nsfw',
+        'sexy', 'harem', 'ecchi', 'oppai', 'nude', 'erotic', '18+',
+        'porn', 'sex', 'strip', 'dating sim', 'visual novel', 'king'];
+
+    const gameName = game.name.toLowerCase();
+
+    return inappropriateKeywords.some(keyword => gameName.includes(keyword));
+}
+
+// Everything above is great for what we have planned, but below I have how to get the featured games
+async function getTopFourGames() {
+    const proxyURL = 'https://corsproxy.io/?';
+    const apiURL = 'https://store.steampowered.com/api/featured/';
+    const res = await fetch(proxyURL + encodeURIComponent(apiURL));
+    const data = await res.json();
+
+    //added the filter here
+    const filteredGames = data.featured_win.filter(game => !isInappropriateGame(game));
+
+    return filteredGames.slice(0,4);
+}
+
+// Next is to populate the cards with what we got from getTopFourGames
+function populateGameCards(games) {
+    const gameCards = document.querySelectorAll('.game-card');
+
+    games.forEach((game, index) => {
+        if (index < gameCards.length) {
+            const card = gameCards[index];
+            const img = card.querySelector('.game-image');
+            img.src = game.header_image;
+            img.alt = game.name;
+            const title = card.querySelector('.game-title');
+            title.textContent = game.name;
+            const description = card.querySelector('.game-description');
+            const rating = card.querySelector('.game-rating');
+            rating.textContent = 'Featured Game';
+        }
+    });
+}
+
+// This will load the feadured games
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        console.log('Getting top four games...');
+        const games = await getTopFourGames();
+        console.log('Top four games aquired:', games);
+        populateGameCards(games);
+    } catch (error) {
+        console.error('Error loading featured games:', error);
+    }
+});
