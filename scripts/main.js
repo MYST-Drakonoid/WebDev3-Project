@@ -110,3 +110,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error loading featured games:', error);
     }
 });
+
+
+function createGameCard({ image, title, description, rating }) {
+  return `
+    <div class="game-card">
+      <img src="${image}" alt="Game" class="game-image" />
+      <div class="game-info">
+        <h3 class="game-title">${title}</h3>
+        <p class="game-description">${description}</p>
+        <p class="game-rating">Rating: ${rating}</p>
+      </div>
+    </div>
+  `;
+}
