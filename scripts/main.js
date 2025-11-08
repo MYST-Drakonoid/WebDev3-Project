@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 
-function createGameCard({ image, title, description, rating }) {
+function createGameCard({ image, title, description, rating }) { // card code for all card visuals you might have
   return `
     <div class="game-card">
       <img src="${image}" alt="Game" class="game-image" />

@@ -38,7 +38,30 @@
   <main id="mainbody">
     <!-- Search Bar -->
      <div class="search-container">
-      <input type="text" id="searchBar" class="search-bar" placeholder = "Search for a game..."/>
+            <form id="searchForm" class="search-container">
+        <!-- Search Text -->
+        <input 
+          type="text" 
+          id="searchBar" 
+          class="search-bar" 
+          placeholder="Search for a game..." 
+          required
+          minlength="2"
+        />
+
+        <!-- Sorting Options -->
+        <div class="sort-options">
+          <p>Sort By:</p>
+          <label>
+            <input type="radio" name="sort" value="price" /> Price
+          </label>
+          <label>
+            <input type="radio" name="sort" value="reviews" /> Top Reviews
+          </label>
+        </div>
+
+        <button type="submit" id="searchButton">Search</button>
+      </form>
      </div>
 
      <!-- Game Cards -->

@@ -163,6 +163,28 @@ body {
   margin: 30px auto;
 }
 
+.sort-options {
+  margin: 15px 0;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  color: var(--color-text);
+}
+
+.sort-options p {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.sort-options label {
+  cursor: pointer;
+}
+
+.sort-options input[type="radio"] {
+  margin-right: 5px;
+}
+
+
 .search-bar {
   width: 100%;
   padding: 15px 20px;
@@ -240,6 +262,8 @@ body {
   color: var(--color-button);
   font-weight: bold;
 }
+
+
 
 /* --- Mobile Layout --- */
 @media (max-width: 768px) {
