@@ -22,7 +22,7 @@
       <ul class="menu-options">
         <li><a href="index.html">Home</a></li>
         <li><a href="random.html">Random Game</a></li>
-        <li><a href="mylist.html">My List</a></li>
+        <li><a href="#" id="openMyListNav">My List</a></li>
       </ul>
     </nav>
 
@@ -65,48 +65,44 @@
      </div>
 
      <!-- Game Cards -->
-    <div class="game-grid">
 
-      <!-- First Card -->
-      <div class="game-card">
-        <img src="https://placeholder.com" alt="Game" class="game-image" />
-        <div class="game-info">
-          <h3 class="game-title">Game Title</h3>
-          <p class="game-description">Game description here</p>
-          <p class="game-rating">Rating: ★★★★☆</p>
+      <div class="game-grid-featured">
+
+     
+      </div>
+      <div class="cards-per-page">
+        <p>Show:</p>
+        <label>
+          <input type="radio" name="cardsCount" value="15" checked />
+          15
+        </label>
+        <label>
+          <input type="radio" name="cardsCount" value="30" />
+          30
+        </label>
+        <label>
+          <input type="radio" name="cardsCount" value="60" />
+          60
+        </label>
+      </div>
+      
+      <div class="game-grid">
+
+     
+      </div>
+
+            <!-- My List Modal -->
+      <div id="myListModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>My List</h2>
+          <div id="myListItems">
+            <!-- Saved games will be dynamically inserted here -->
+          </div>
         </div>
       </div>
 
-      <!-- Second Card -->
-      <div class="game-card">
-        <img src="https://placeholder.com" alt="Game" class="game-image" />
-        <div class="game-info">
-          <h3 class="game-title">Game Title</h3>
-          <p class="game-description">Game description here</p>
-          <p class="game-rating">Rating: ★★★★☆</p>
-        </div>
-      </div>
-
-      <!-- Third Card -->
-      <div class="game-card">
-      <img src="https://placeholder.com" alt="Game" class="game-image" />
-        <div class="game-info">
-          <h3 class="game-title">Game Title</h3>
-          <p class="game-description">Game description here</p>
-          <p class="game-rating">Rating: ★★★★☆</p>
-        </div>
-      </div>
-
-      <!-- Fourth Card -->
-      <div class="game-card">
-        <img src="https://placeholder.com" alt="Game" class="game-image" />
-        <div class="game-info">
-          <h3 class="game-title">Game Title</h3>
-          <p class="game-description">Game description here</p>
-          <p class="game-rating">Rating: ★★★★☆</p>
-        </div>
-      </div>
-    </div>
+      <div id="toast-container"></div>
   </main>
 
   <footer class="footer">

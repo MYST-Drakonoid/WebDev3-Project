@@ -1,0 +1,111 @@
+<!-- https://myst-drakonoid.github.io/WebDev3-Project -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game review helper</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="scripts/main.js"></script>
+  </head>
+
+  <!-- HEADER -->
+  <header class="header-container">
+    <div class="logo-title">
+      <img src="images/logo.png" alt="Logo" class="logo" />
+      <h1 class="header-title">Game Review Helper</h1>
+    </div>
+
+    <nav class="menu">
+      <ul class="menu-options">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="random.html">Random Game</a></li>
+        <li><a href="#" id="openMyListNav">My List</a></li>
+      </ul>
+    </nav>
+
+    <select class="menu-dropdown" onchange="location = this.value;">
+      <option value="#" selected disabled>Menu</option>
+      <option value="home.html">Home</option>
+      <option value="games.html">Games</option>
+      <option value="about.html">About</option>
+    </select>
+  </header>
+
+  <!-- MAIN BODY -->
+  <main id="mainbody">
+    <!-- Search Bar -->
+     <div class="search-container">
+            <form id="searchForm" class="search-container">
+        <!-- Search Text -->
+        <input 
+          type="text" 
+          id="searchBar" 
+          class="search-bar" 
+          placeholder="Search for a game..." 
+          required
+          minlength="2"
+        />
+
+        <!-- Sorting Options -->
+        <div class="sort-options">
+          <p>Sort By:</p>
+          <label>
+            <input type="radio" name="sort" value="price" /> Price
+          </label>
+          <label>
+            <input type="radio" name="sort" value="reviews" /> Top Reviews
+          </label>
+        </div>
+
+        <button type="submit" id="searchButton">Search</button>
+      </form>
+     </div>
+
+     <!-- Game Cards -->
+
+
+      <div class="cards-per-page">
+        <p>Show:</p>
+        <label>
+          <input type="radio" name="cardsCount" value="15" checked />
+          15
+        </label>
+        <label>
+          <input type="radio" name="cardsCount" value="30" />
+          30
+        </label>
+        <label>
+          <input type="radio" name="cardsCount" value="60" />
+          60
+        </label>
+      </div>
+      
+      <div class="game-grid">
+
+     
+      </div>
+
+                  <!-- My List Modal -->
+      <div id="myListModal" class="modal">
+        <div class="modal-content">
+          <span class="close-button">&times;</span>
+          <h2>My List</h2>
+          <div id="myListItems">
+            <!-- Saved games will be dynamically inserted here -->
+          </div>
+        </div>
+      </div>
+
+
+      <div id="toast-container"></div>
+  </main>
+
+  <footer class="footer">
+    <p>Project for WDD231 by: Garren Meisman and Anthony Peterson</p>
+
+  </footer>
+
+</html>
