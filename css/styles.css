@@ -259,6 +259,56 @@ body {
   
 }
 
+/*contact form*/
+
+.contact-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--color-block);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-block-border);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--color-text);
+}
+
+.contact-form label {
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.contact-form input,
+.contact-form textarea {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  border: 1px solid var(--color-block-border);
+  border-radius: var(--border-radius);
+  padding: 10px;
+}
+
+.contact-submit {
+  background-color: var(--color-button);
+  border: none;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact-submit:hover {
+  background-color: var(--color-button-hover);
+}
+
+
 /* My List Button inside game cards */
 .game-card .list-toggle-button {
   display: block;
@@ -418,14 +468,34 @@ body {
   margin-bottom: 15px;
 }
 
+/* --- Card Fade-In Animation --- */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.game-card {
+  opacity: 0;                /* Start hidden */
+  animation: cardFadeIn 0.5s ease forwards;
+}
+
+
 
 /* --- Mobile Layout --- */
 @media (max-width: 768px) {
-  /* Hide the horizontal menu and show dropdown */
+
+  /* Hide old horizontal menu */
   .menu-options {
     display: none;
   }
 
+  /* Show dropdown select */
   .menu-dropdown {
     display: block;
     width: 80%;
@@ -445,5 +515,52 @@ body {
     padding: 10px;
   }
 
+  /* Mobile menu toggle button */
+  .mobile-menu-button {
+    display: block;
+    background-color: var(--color-button);
+    color: var(--color-text);
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 10px auto;
+  }
 
+  /* Mobile slide-down menu */
+  .mobile-menu {
+    list-style: none;
+    background-color: var(--color-block);
+    border: 1px solid var(--color-block-border);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .mobile-menu li a {
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 10px 0;
+  }
+
+  .mobile-menu li a:hover {
+    color: var(--color-link-hover);
+  }
+
+  .mobile-menu.show {
+    max-height: 300px;
+  }
+
+  .mobile-menu.hidden {
+    max-height: 0;
+  }
 }
