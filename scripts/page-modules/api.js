@@ -1,40 +1,26 @@
-import { isInappropriateGame } from "./filters.js";
-
-const proxy = "https://corsproxy.io/?";
-
-const key = "";
-GET 
+const API_BASE = "https://your-render-backend.onrender.com/steam";
 
 export async function getAllGames() {
-    try {
-        const link = `https://api.steampowered.com/IStoreService/GetAppList/v1/?key=${STEAM_KEY}&include_dlc=false&max_results=10000`;
-        const res = await fetch(proxy + encodeURIComponent(link));
-        const data = await res.json();
+    const res = await fetch(`${API_BASE}/apps`);
+    const data = await res.json();
 
-        let games = data.applist.apps.filter(g => !isInappropriateGame(g));
+    const games = data.applist.apps;
 
-        return games.map(g => ({
-            title: g.name,
-            description: "No description available.",
-            image: `https://steamcdn-a.akamaihd.net/steam/apps/${g.appid}/header.jpg`,
-            rating: Math.floor(Math.random() * 10),
-            price: Math.random() * 60,
-            appid: g.appid
-        }));
-    } catch (err) {
-        console.error("API error:", err);
-        return [];
-    }
+    return games.map(g => ({
+        title: g.name,
+        description: "No description yet.",
+        image: `https://steamcdn-a.akamaihd.net/steam/apps/${g.appid}/header.jpg`,
+        rating: Math.floor(Math.random() * 10),
+        price: Math.random() * 60,
+        appid: g.appid
+    }));
 }
 
 export async function getTopFourGames() {
-    const url = "https://store.steampowered.com/api/featured/";
-    const res = await fetch(proxy + encodeURIComponent(url));
+    const res = await fetch(`${API_BASE}/featured`);
     const data = await res.json();
 
-    const filtered = data.featured_win.filter(g => !isInappropriateGame(g));
-
-    return filtered.slice(0, 4).map(g => ({
+    return data.featured_win.slice(0, 4).map(g => ({
         title: g.name,
         description: g.short_description,
         image: g.header_image,
