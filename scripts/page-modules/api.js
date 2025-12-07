@@ -1,26 +1,33 @@
-const API_BASE = "https://your-render-backend.onrender.com/steam";
+import { isInappropriateGame } from "./filters";
+
+
+const backend = "https://YOUR-BACKEND-SERVICE.onrender.com";
 
 export async function getAllGames() {
-    const res = await fetch(`${API_BASE}/apps`);
+    const res = await fetch(`${backend}/steam/apps`);
     const data = await res.json();
 
-    const games = data.applist.apps;
-
-    return games.map(g => ({
-        title: g.name,
+    return data.response.apps.map(app => ({
+        title: app.name,
+        appid: app.appid,
         description: "No description yet.",
-        image: `https://steamcdn-a.akamaihd.net/steam/apps/${g.appid}/header.jpg`,
+        image: `https://steamcdn-a.akamaihd.net/steam/apps/${app.appid}/header.jpg`,
         rating: Math.floor(Math.random() * 10),
-        price: Math.random() * 60,
-        appid: g.appid
+        price: Math.random() * 60
     }));
 }
 
+
 export async function getTopFourGames() {
-    const res = await fetch(`${API_BASE}/featured`);
+    const url = "https://store.steampowered.com/api/featured/";
+    const res = await fetch(proxy + encodeURIComponent(url));
     const data = await res.json();
 
-    return data.featured_win.slice(0, 4).map(g => ({
+    const filtered = data.featured_win.filter(
+        g => g.name && !isInappropriateGame(g)
+    );
+
+    return filtered.slice(0, 4).map(g => ({
         title: g.name,
         description: g.short_description,
         image: g.header_image,
