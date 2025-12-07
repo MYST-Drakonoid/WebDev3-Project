@@ -1,14 +1,17 @@
-import { populateFeaturedGames } from "./modules/api.js";
-import { initializeMyListModal } from "./modules/modal.js";
-import { setupPaginatedGames } from ".cards.js";
+import { populateFeaturedGames } from "./page-modules/featured.js";
+import { initializeMyListModal } from "./page-modules/modal.js";
+import { setupPaginatedGames } from "./page-modules/pagination.js";
 import { attachGlobalEventListeners } from "./eventlisteners.js";
+import { getAllGames, getTopFourGames } from "./page-modules/api.js";
+
+
 
 document.addEventListener("DOMContentLoaded", async () => {
     attachGlobalEventListeners();
     initializeMyListModal("openMyListNav", "myListModal", "myListItems");
 
-    const allGames = await window.api_getAllGames();
-    const topGames = await window.api_getTopFourGames();
+    const allGames = await getAllGames();
+    const topGames = await getTopFourGames();
     const topIds = topGames.map(g => g.appid);
 
     await populateFeaturedGames();

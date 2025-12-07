@@ -2,7 +2,8 @@ import { isInappropriateGame } from "./filters.js";
 
 const proxy = "https://corsproxy.io/?";
 
-export async function api_getAllGames() {
+
+export async function getAllGames() {
     try {
         const link = "https://api.steampowered.com/ISteamApps/GetAppList/v2/";
         const res = await fetch(proxy + encodeURIComponent(link));
@@ -24,7 +25,7 @@ export async function api_getAllGames() {
     }
 }
 
-export async function api_getTopFourGames() {
+export async function getTopFourGames() {
     const url = "https://store.steampowered.com/api/featured/";
     const res = await fetch(proxy + encodeURIComponent(url));
     const data = await res.json();

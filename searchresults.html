@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game review helper</title>
     <link rel="stylesheet" href="css/styles.css" />
-    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/searchresults.js"></script>
   </head>
 <body>
   <!-- HEADER -->
@@ -38,11 +38,12 @@
   <main id="mainbody">
     <!-- Search Bar -->
      <div class="search-container">
-            <form id="searchForm" class="search-container">
+            <form id="searchForm" class="search-container"action="searchresults.html" method="GET">
         <!-- Search Text -->
         <input 
           type="text" 
-          id="searchBar" 
+          id="searchBar"
+          name="query"
           class="search-bar" 
           placeholder="Search for a game..." 
           required
