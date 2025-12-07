@@ -10,7 +10,7 @@
   --color-link: #66c0f4;
   --color-link-hover: #ffffff;
 
-  --shadow-default: 0 4px 8px rgba(0,0,0,0.3);
+  --shadow-default: 0 4px 8px rgba(0, 0, 0, 0.3);
   --border-radius: 8px;
 
   --padding-block: 20px;
@@ -59,6 +59,11 @@ body {
   color: var(--color-text);
 }
 
+/* Desktop nav */
+.menu {
+  margin-top: 5px;
+}
+
 .menu-options {
   list-style: none;
   display: flex;
@@ -78,6 +83,15 @@ body {
 .menu-options li a:hover {
   background-color: var(--color-block);
   color: var(--color-link-hover);
+}
+
+/* Desktop: hide mobile UI by default */
+.mobile-menu-button {
+  display: none;
+}
+
+.mobile-menu {
+  display: none;
 }
 
 /* --- Main Body --- */
@@ -155,7 +169,6 @@ body {
   color: var(--color-text);
 }
 
-
 /* --- Search Bar --- */
 .search-container {
   width: 100%;
@@ -184,7 +197,6 @@ body {
   margin-right: 5px;
 }
 
-
 .search-bar {
   width: 100%;
   padding: 15px 20px;
@@ -205,12 +217,12 @@ body {
   border-color: var(--color-button);
 }
 
-/* --- Search Button (Below Parameters) --- */
+/* --- Search Button --- */
 #searchButton {
-  display: block; 
-  width: 100%; 
+  display: block;
+  width: 100%;
   max-width: 200px;
-  margin: 20px auto 0 auto; 
+  margin: 20px auto 0 auto;
   padding: 12px 0;
   font-size: 1.1rem;
   font-weight: bold;
@@ -251,16 +263,96 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-default);
   transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0; /* start hidden for animation */
+  animation: cardFadeIn 0.5s ease forwards;
 }
 
 .game-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-  
 }
 
-/*contact form*/
+.game-image {
+  width: 100%;
+  height: 215px;
+  object-fit: cover;
+  display: block;
+}
 
+.game-info {
+  padding: 20px;
+}
+
+.game-title {
+  font-size: 1.4rem;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.game-description {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.game-rating {
+  font-size: 1rem;
+  color: var(--color-button);
+  font-weight: bold;
+}
+
+/* Cards per page controls */
+.cards-per-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  background-color: var(--color-block);
+  border: 1px solid var(--color-block-border);
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  box-shadow: var(--shadow-default);
+}
+
+.cards-per-page p {
+  margin: 0;
+  font-weight: bold;
+  color: var(--color-text);
+}
+
+.cards-per-page label {
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.cards-per-page input[type="radio"] {
+  margin-right: 5px;
+  accent-color: var(--color-button);
+}
+
+/* --- Featured Games Grid (Desktop 2x2) --- */
+.game-grid-featured {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 × 2 on desktop */
+  gap: 30px;
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto 10px auto;
+  padding: 20px;
+}
+
+/* Optional: larger images for featured cards */
+.game-grid-featured .game-image {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Contact form */
 .contact-form {
   margin-top: 20px;
   display: flex;
@@ -308,8 +400,7 @@ body {
   background-color: var(--color-button-hover);
 }
 
-
-/* My List Button inside game cards */
+/* My List button inside cards */
 .game-card .list-toggle-button {
   display: block;
   width: 100%;
@@ -333,72 +424,6 @@ body {
 .game-card .list-toggle-button:active {
   transform: translateY(1px);
 }
-
-.game-image {
-  width: 100%;
-  height: 215px;
-  object-fit: cover;
-  display: block;
-}
-
-.game-info {
-  padding: 20px;
-}
-
-.game-title {
-  font-size: 1.4rem;
-  color: var(--color-text);
-  margin-bottom: 10px;
-}
-
-.game-description {
-  font-size: 0.95rem;
-  color: var(--color-text);
-  line-height: 1.5;
-  margin-bottom: 10px;
-  opacity: 0.9;
-}
-
-.game-rating {
-  font-size: 1rem;
-  color: var(--color-button);
-  font-weight: bold;
-}
-
-
-.cards-per-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
-  background-color: var(--color-block);
-  border: 1px solid var(--color-block-border);
-  border-radius: var(--border-radius);
-  padding: 10px 20px;
-  box-shadow: var(--shadow-default);
-}
-
-.cards-per-page p {
-  margin: 0;
-  font-weight: bold;
-  color: var(--color-text);
-}
-
-.cards-per-page label {
-  color: var(--color-text);
-  cursor: pointer;
-}
-
-.cards-per-page input[type="radio"] {
-  margin-right: 5px;
-  accent-color: var(--color-button);
-}
-
-.menu-dropdown {
-  display: none;
-}
-
 
 /* Toast styles */
 #toast-container {
@@ -428,7 +453,7 @@ body {
 
 /* Modal Background */
 .modal {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -436,7 +461,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* Modal Box */
@@ -480,42 +505,19 @@ body {
   }
 }
 
-.game-card {
-  opacity: 0;                /* Start hidden */
-  animation: cardFadeIn 0.5s ease forwards;
-}
-
 
 
 /* --- Mobile Layout --- */
+/* --- Mobile Layout --- */
+/* --- Mobile Layout --- */
 @media (max-width: 768px) {
 
-  /* Hide old horizontal menu */
-  .menu-options {
+  /* Hide desktop nav on mobile */
+  .menu {
     display: none;
   }
 
-  /* Show dropdown select */
-  .menu-dropdown {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    background-color: var(--color-block);
-    color: var(--color-text);
-    border: 1px solid var(--color-block-border);
-    border-radius: var(--border-radius);
-    padding: 10px;
-    font-size: 1rem;
-  }
-
-  /* Switch game grid to one column */
-  .game-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 10px;
-  }
-
-  /* Mobile menu toggle button */
+  /* Toggle button */
   .mobile-menu-button {
     display: block;
     background-color: var(--color-button);
@@ -528,22 +530,34 @@ body {
     margin: 10px auto;
   }
 
-  /* Mobile slide-down menu */
+  /* MOBILE MENU - fully hidden when closed */
   .mobile-menu {
     list-style: none;
     background-color: var(--color-block);
     border: 1px solid var(--color-block-border);
     border-radius: var(--border-radius);
-    padding: 10px;
+
     width: 80%;
-    margin: 10px auto;
+    margin: 0 auto;
+
     display: flex;
     flex-direction: column;
     gap: 10px;
 
+    /* CLOSED STATE */
     max-height: 0;
+    padding: 0;                  /* remove padding when closed */
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    visibility: hidden;          /* hide so menu doesn't occupy space */
+    transition: max-height 0.3s ease, padding 0.3s ease, visibility 0.3s ease;
+  }
+
+  /* OPENED STATE */
+  .mobile-menu.open {
+    max-height: 300px;
+    padding: 10px;               /* restore padding */
+    visibility: visible;         /* now it appears */
+    overflow: visible;
   }
 
   .mobile-menu li a {
@@ -556,11 +570,22 @@ body {
     color: var(--color-link-hover);
   }
 
-  .mobile-menu.show {
-    max-height: 300px;
+    .mobile-menu li {
+    text-align: center;
   }
 
-  .mobile-menu.hidden {
-    max-height: 0;
+  /* Game grid 1-column on mobile */
+  .game-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  /* Featured Games Grid — Mobile 1 Column */
+  .game-grid-featured {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+    max-width: 100%;
   }
 }

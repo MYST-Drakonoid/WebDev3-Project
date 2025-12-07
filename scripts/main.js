@@ -14,6 +14,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     const topGames = await getTopFourGames();
     const topIds = topGames.map(g => g.appid);
 
+    const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+        });
+    }
+
     await populateFeaturedGames();
 
     const nonFeatured = allGames.filter(g => !topIds.includes(g.appid));

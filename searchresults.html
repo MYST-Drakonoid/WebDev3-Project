@@ -26,12 +26,13 @@
       </ul>
     </nav>
 
-    <select class="menu-dropdown" onchange="location = this.value;">
-      <option value="#" selected disabled>Menu</option>
-      <option value="home.html">Home</option>
-      <option value="games.html">Games</option>
-      <option value="about.html">About</option>
-    </select>
+    <button id="mobileMenuToggle" class="mobile-menu-button">☰ Menu</button>
+
+    <ul id="mobileMenu" class="mobile-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="random.html">Random Game</a></li>
+      <li><a href="#" id="openMyListMobile">My List</a></li>
+    </ul>
   </header>
 
   <!-- MAIN BODY -->
@@ -123,6 +124,7 @@
   </form>
 
   </footer>
+  <script type="module" src="scripts/searchresults.js"></script>
   </body>
 
 </html>
