@@ -1,7 +1,9 @@
-import { isInappropriateGame } from "./filters";
+import { isInappropriateGame } from "./filters.js";
+
 
 
 const backend = "https://YOUR-BACKEND-SERVICE.onrender.com";
+const proxy = "https://corsproxy.io/?";
 
 export async function getAllGames() {
     const res = await fetch(`${backend}/steam/apps`);
