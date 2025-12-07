@@ -2,10 +2,12 @@ import { isInappropriateGame } from "./filters.js";
 
 const proxy = "https://corsproxy.io/?";
 
+const key = "";
+GET 
 
 export async function getAllGames() {
     try {
-        const link = "https://api.steampowered.com/ISteamApps/GetAppList/v2/";
+        const link = `https://api.steampowered.com/IStoreService/GetAppList/v1/?key=${STEAM_KEY}&include_dlc=false&max_results=10000`;
         const res = await fetch(proxy + encodeURIComponent(link));
         const data = await res.json();
 
