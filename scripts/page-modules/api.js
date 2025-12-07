@@ -2,7 +2,7 @@ import { isInappropriateGame } from "./filters.js";
 
 
 
-const backend = "https://YOUR-BACKEND-SERVICE.onrender.com";
+const backend = "https://webdev3-project.onrender.com";
 const proxy = "https://corsproxy.io/?";
 
 export async function getAllGames() {
