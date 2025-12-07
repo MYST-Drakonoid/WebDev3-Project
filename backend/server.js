@@ -53,7 +53,7 @@ app.get("/steam/featured", async (req, res) => {
 app.get("/steam/appdetails/:appid", async (req, res) => {
     const { appid } = req.params;
 
-    // Check cache (valid for 12 hours)
+    // Check cache
     if (appDetailsCache.has(appid)) {
         const cached = appDetailsCache.get(appid);
         const age = Date.now() - cached.timestamp;
@@ -73,13 +73,16 @@ app.get("/steam/appdetails/:appid", async (req, res) => {
             return res.status(404).json({ error: "Steam returned no data" });
         }
 
-        // Store in cache
+        // Extract ONLY the desired part
+        const result = json[appid];
+
+        // Cache the result
         appDetailsCache.set(appid, {
             timestamp: Date.now(),
-            data: json
+            data: result
         });
 
-        res.json(json);
+        res.json(result);
 
     } catch (err) {
         res.status(500).json({ error: "AppDetails API failed", details: err.message });
