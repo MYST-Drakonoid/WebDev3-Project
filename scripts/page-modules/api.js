@@ -29,8 +29,9 @@ export async function getAllGames() {
         const backendRes = await fetch(`${backend}/steam/apps`);
         if (!backendRes.ok) throw new Error("Backend fetch failed");
 
+        // Backend already returns the apps array
         const backendData = await backendRes.json();
-        return await formatGames(backendData.response.apps);
+        return await formatGames(backendData);
     }
     catch (err) {
         console.warn("Backend unavailable, using fallback info.json", err);
@@ -40,6 +41,7 @@ export async function getAllGames() {
         return await formatGames(fallbackData.response.apps);
     }
 }
+
 
 
 
