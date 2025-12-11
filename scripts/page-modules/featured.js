@@ -9,16 +9,16 @@ export async function populateFeaturedGames() {
 
     const games = await getTopFourGames();
 
-    games.forEach(g => {
-        const card = createGameCard({
-            image: g.image,
-            title: g.title,
-            description: g.description || "No description available.",
-            rating: g.rating,
-            price: g.price,
-            appid: g.appid
-        });
-
-        featuredGrid.appendChild(card);
+for (const g of games) {
+    const card = await createGameCard({
+        image: g.image,
+        title: g.title,
+        description: g.description || "No description available.",
+        rating: g.rating,
+        price: g.price,
+        appid: g.appid
     });
+
+    featuredGrid.appendChild(card);
+};
 }

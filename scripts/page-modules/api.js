@@ -38,3 +38,45 @@ export async function getTopFourGames() {
         appid: g.id
     }));
 }
+
+
+export async function getDescription(appid) {
+    const realURL = `https://store.steampowered.com/api/appdetails?appids=${appid}`;
+    const res = await fetch(proxy + encodeURIComponent(realURL));
+    const json = await res.json();
+
+    const data = json[appid]?.data;
+    if (!data) return "No description";
+
+    return data.short_description ||
+           data.detailed_description ||
+           "No description";
+}
+
+
+export async function getPrice(appid) {
+    const realURL = `https://store.steampowered.com/api/appdetails?appids=${appid}`;
+    const res = await fetch(proxy + encodeURIComponent(realURL));
+    const json = await res.json();
+
+    const data = json[appid]?.data;
+    if (!data) return "Unknown";
+
+    return data.price_overview
+        ? data.price_overview.final_formatted
+        : "Unknown";
+}
+
+
+export async function getMetacritic(appid) {
+    const realURL = `https://store.steampowered.com/api/appdetails?appids=${appid}`;
+    const res = await fetch(proxy + encodeURIComponent(realURL));
+    const json = await res.json();
+
+    const data = json[appid]?.data;
+    if (!data) return null;
+
+    return data.metacritic
+        ? data.metacritic.score
+        : null;
+}
