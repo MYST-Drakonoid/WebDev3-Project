@@ -21,7 +21,7 @@ export async function createGameCard(game) {
             <h3 class="game-title">${title}</h3>
             <p class="game-description">${desc}</p>
             <p class="game-rating">Rating: ${rating ?? "N/A"}</p>
-            <p class="game-price">Price: $${price ?? "Unknown"}</p>
+            <p class="game-price">Price: ${price ?? "Unknown"}</p>
             <button class="list-toggle-button"></button>
         </div>
     `;
