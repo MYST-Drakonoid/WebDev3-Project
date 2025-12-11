@@ -6,7 +6,7 @@ const backend = "https://webdev3-project.onrender.com";
 const proxy = "https://corsproxy.io/?";
 
 export async function getAllGames() {
-    const res = await fetch(`${backend}/steam/apps`);
+    const res = await fetch("info.json");
     const data = await res.json();
 
     return data.response.apps.map(app => ({
