@@ -4,11 +4,14 @@ import { setupPaginatedGames } from "./page-modules/pagination.js";
 import { attachGlobalEventListeners } from "./eventlisteners.js";
 import { getAllGames, getTopFourGames } from "./page-modules/api.js";
 
-
-
 document.addEventListener("DOMContentLoaded", async () => {
     attachGlobalEventListeners();
+
+    // Desktop My List
     initializeMyListModal("openMyListNav", "myListModal", "myListItems");
+
+    // Mobile My List  ✅ ADD THIS
+    initializeMyListModal("openMyListMobile", "myListModal", "myListItems");
 
     const allGames = await getAllGames();
     const topGames = await getTopFourGames();
@@ -19,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (mobileMenuToggle && mobileMenu) {
         mobileMenuToggle.addEventListener("click", () => {
-        mobileMenu.classList.toggle("open");
+            mobileMenu.classList.toggle("open");
         });
     }
 
