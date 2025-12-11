@@ -6,18 +6,42 @@ const backend = "https://webdev3-project.onrender.com";
 const proxy = "https://corsproxy.io/?";
 
 export async function getAllGames() {
-    const res = await fetch("info.json");
-    const data = await res.json();
+    async function formatGames(list) {
+        const mapped = list.map(app => ({
+            title: app.name,
+            appid: app.appid,
+            description: "No description yet.",
+            image: `https://steamcdn-a.akamaihd.net/steam/apps/${app.appid}/header.jpg`,
+            rating: Math.floor(Math.random() * 10),
+            price: Math.random() * 60
+        }));
 
-    return data.response.apps.map(app => ({
-        title: app.name,
-        appid: app.appid,
-        description: "No description yet.",
-        image: `https://steamcdn-a.akamaihd.net/steam/apps/${app.appid}/header.jpg`,
-        rating: Math.floor(Math.random() * 10),
-        price: Math.random() * 60
-    }));
+        // Shuffle using Fisher–Yates
+        for (let i = mapped.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [mapped[i], mapped[j]] = [mapped[j], mapped[i]];
+        }
+
+        return mapped;
+    }
+
+    try {
+        const backendRes = await fetch(`${backend}/steam/apps`);
+        if (!backendRes.ok) throw new Error("Backend fetch failed");
+
+        const backendData = await backendRes.json();
+        return await formatGames(backendData.response.apps);
+    }
+    catch (err) {
+        console.warn("Backend unavailable, using fallback info.json", err);
+
+        const res = await fetch("info.json");
+        const fallbackData = await res.json();
+        return await formatGames(fallbackData.response.apps);
+    }
 }
+
+
 
 
 export async function getTopFourGames() {
