@@ -1,3 +1,5 @@
+import { showToast } from "./page-modules/utils.js";
+
 export function attachGlobalEventListeners() {
     const searchForm = document.getElementById("searchForm");
 
@@ -13,7 +15,7 @@ export function attachGlobalEventListeners() {
     if (contactForm) {
         contactForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            alert("Thank you! Your message has been received.");
+            showToast("Thank you! Your message has been received.");
             contactForm.reset();
         });
     }

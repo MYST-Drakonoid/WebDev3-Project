@@ -18,7 +18,7 @@ export async function createGameCard(game) {
     card.innerHTML = `
         <img src="${image}" alt="${title}" class="game-image" />
         <div class="game-info">
-            <h3 class="game-title">${title}</h3>
+            <h2 class="game-title">${title}</h3>
             <p class="game-description">${desc}</p>
             <p class="game-rating">Rating: ${rating ?? "N/A"}</p>
             <p class="game-price">Price: ${price ?? "Unknown"}</p>
